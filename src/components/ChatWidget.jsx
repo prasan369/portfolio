@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { FiX, FiSend } from 'react-icons/fi';
-import { BsRobot } from 'react-icons/bs';
+import { useState } from 'react';
 
 const WORKER_URL = 'https://rocky-demo-proxy.prasan.workers.dev';
 
@@ -10,8 +10,7 @@ const SUGGESTIONS = [
   'Is he open to internships?',
 ];
 
-export default function ChatWidget() {
-  const [open, setOpen] = useState(false);
+export default function ChatWidget({ open, setOpen }) {
   const [messages, setMessages] = useState([
     { role: 'assistant', content: "Hey, I'm Rocky \u2014 a small live demo of the assistant Prasan built. Ask me about him or this site." },
   ]);
@@ -65,63 +64,56 @@ export default function ChatWidget() {
     }
   };
 
+  if (!open) return null;
+
   return (
-    <>
-      <button
-        className="chat-fab"
-        onClick={() => setOpen((o) => !o)}
-        aria-label={open ? 'Close chat' : 'Open chat with Rocky'}
-      >
-        {open ? <FiX size={20} /> : <BsRobot size={20} />}
-      </button>
+    <div className="chat-panel">
+      <div className="chat-header">
+        <span className="chat-dot" />
+        <div>
+          <div className="chat-header-title">Rocky</div>
+          <div className="chat-header-sub mono">live demo</div>
+        </div>
+        <button className="chat-close" onClick={() => setOpen(false)} aria-label="Close chat">
+          <FiX size={16} />
+        </button>
+      </div>
 
-      {open && (
-        <div className="chat-panel">
-          <div className="chat-header">
-            <span className="chat-dot" />
-            <div>
-              <div className="chat-header-title">Rocky</div>
-              <div className="chat-header-sub mono">live demo</div>
-            </div>
+      <div className="chat-messages" ref={scrollRef}>
+        {messages.map((m, i) => (
+          <div key={i} className={`chat-bubble ${m.role}`}>
+            {m.content}
           </div>
-
-          <div className="chat-messages" ref={scrollRef}>
-            {messages.map((m, i) => (
-              <div key={i} className={`chat-bubble ${m.role}`}>
-                {m.content}
-              </div>
-            ))}
-            {loading && (
-              <div className="chat-bubble assistant chat-typing">
-                <span /><span /><span />
-              </div>
-            )}
+        ))}
+        {loading && (
+          <div className="chat-bubble assistant chat-typing">
+            <span /><span /><span />
           </div>
+        )}
+      </div>
 
-          {messages.length === 1 && (
-            <div className="chat-suggestions">
-              {SUGGESTIONS.map((s) => (
-                <button key={s} onClick={() => send(s)} className="chat-suggestion">
-                  {s}
-                </button>
-              ))}
-            </div>
-          )}
-
-          <div className="chat-input-row">
-            <textarea
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="Ask Rocky something..."
-              rows={1}
-            />
-            <button onClick={() => send()} disabled={loading} aria-label="Send">
-              <FiSend size={16} />
+      {messages.length === 1 && (
+        <div className="chat-suggestions">
+          {SUGGESTIONS.map((s) => (
+            <button key={s} onClick={() => send(s)} className="chat-suggestion">
+              {s}
             </button>
-          </div>
+          ))}
         </div>
       )}
-    </>
+
+      <div className="chat-input-row">
+        <textarea
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={handleKeyDown}
+          placeholder="Ask Rocky something..."
+          rows={1}
+        />
+        <button onClick={() => send()} disabled={loading} aria-label="Send">
+          <FiSend size={16} />
+        </button>
+      </div>
+    </div>
   );
 }

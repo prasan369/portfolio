@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
@@ -10,10 +11,12 @@ import ContactPage from './pages/ContactPage';
 import './components/components.css';
 
 function App() {
+  const [chatOpen, setChatOpen] = useState(false);
+
   return (
     <HashRouter>
       <ScrollToTop />
-      <Nav />
+      <Nav chatOpen={chatOpen} setChatOpen={setChatOpen} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/work" element={<Work />} />
@@ -21,7 +24,7 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
       <Footer />
-      <ChatWidget />
+      <ChatWidget open={chatOpen} setOpen={setChatOpen} />
     </HashRouter>
   );
 }
