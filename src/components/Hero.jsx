@@ -14,6 +14,8 @@ export default function Hero() {
       <p className="hero-sub">
         BIT student in Kathmandu, currently deep in LangGraph and Groq,
         building toward a wearable version of the same idea.
+        
+        <p>You can talk to my assistant in the top right navbar.</p>
       </p>
       <div className="hero-actions">
         <Link className="link-arrow" to="/work">Selected work</Link>

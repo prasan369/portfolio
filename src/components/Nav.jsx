@@ -11,7 +11,7 @@ export default function Nav({ chatOpen, setChatOpen }) {
   return (
     <nav className="nav">
       <div className="container nav-inner">
-        <Link to="/" className="nav-brand">prasan.dev</Link>
+        <Link to="/" className="nav-brand">Prasan</Link>
         <div className="nav-links">
           {links.map((l) => (
             <NavLink

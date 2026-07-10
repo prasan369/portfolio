@@ -3,7 +3,7 @@ const projects = [
     name: 'Rocky',
     year: '2026',
     status: 'Active',
-    desc: 'A personal, desktop assistant for Windows — hotkey activation, system-tray presence, Gmail tools, vision, system control, and persistent memory, orchestrated as a LangGraph agent on Groq\u2019s Llama 3.3 70B.',
+    desc: 'A personal, desktop assistant for Windows — hotkey activation, system-tray presence, Gmail tools, vision, system control, and persistent memory, orchestrated as a LangGraph agent on Groq\u2019s Llama 3.3 70B. You can talk to it in the top right navbar.',
     tags: ['LangGraph', 'Groq', 'Python'],
   },
   {
