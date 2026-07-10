@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
-import { FiMessageCircle, FiX, FiSend } from 'react-icons/fi';
+import { FiX, FiSend } from 'react-icons/fi';
+import { BsRobot } from 'react-icons/bs';
 
 const WORKER_URL = 'https://rocky-demo-proxy.prasan.workers.dev';
 
@@ -71,7 +72,7 @@ export default function ChatWidget() {
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? 'Close chat' : 'Open chat with Rocky'}
       >
-        {open ? <FiX size={20} /> : <FiMessageCircle size={20} />}
+        {open ? <FiX size={20} /> : <BsRobot size={20} />}
       </button>
 
       {open && (
