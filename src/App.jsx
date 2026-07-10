@@ -2,6 +2,7 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import ChatWidget from './components/ChatWidget';
 import Home from './pages/Home';
 import Work from './pages/Work';
 import AboutPage from './pages/AboutPage';
@@ -20,6 +21,7 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
       <Footer />
+      <ChatWidget />
     </HashRouter>
   );
 }
