@@ -4,7 +4,7 @@ import { FiGithub, FiLinkedin, FiMail, FiCheck } from 'react-icons/fi';
 const EMAIL = 'thapaprasan058@gmail.com';
 
 export default function Contact() {
-  const ACCESS_KEY = "PASTE_YOUR_ACCESS_KEY_HERE";
+  const ACCESS_KEY = "7c0d8ec7-26c2-4865-89e4-123420a9e87a";
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [copied, setCopied] = useState(false);
