@@ -52,9 +52,10 @@ export default {
         Authorization: `Bearer ${env.GROQ_API_KEY}`,
       },
       body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
+        model: "openai/gpt-oss-20b",
         messages,
-        max_tokens: 200,
+        max_tokens: 600,
+        reasoning_effort: "low",
         temperature: 0.7,
       }),
     });
