@@ -673,3 +673,35 @@ textarea.form-input {
 .chat-input-row button:disabled {
   opacity: 0.5;
 }
+.rocky-launcher {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  border: none;
+  background: var(--accent);
+  color: var(--bg);
+  font: 600 15px/1 var(--font-body);
+  box-shadow: 0 8px 30px rgba(217, 140, 78, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.rocky-launcher:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(217, 140, 78, 0.5);
+}
+.rocky-launcher-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bg);
+  animation: rockyPulse 1.8s ease-in-out infinite;
+}
+@keyframes rockyPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.5); }
+}
